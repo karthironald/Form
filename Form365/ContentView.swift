@@ -16,11 +16,16 @@ let kAppInputColor = Color(kAppInputUIColor)
 struct ContentView: View {
     
     @State var ageName = ""
-    @State private var textViewMessage = ""
     @State var vSpacing: CGFloat = 3
     @State var shouldShowPatientsList = false
     @State var shouldShowDoctorsList = false
     @State var shouldShowCopyToDoctorsList = false
+    @State var isUrgent = false
+    @State var shouldUpdateHealthRecord = false
+    @State var clinicalNotes = ""
+    @State var testsRequested = ""
+    @State var signature = ""
+    
     @ObservedObject var patientsData: PatientsData = PatientsData()
     @ObservedObject var doctorsData: DoctorsData = DoctorsData()
     @ObservedObject var copyToDoctorsData: DoctorsData = DoctorsData()
@@ -155,26 +160,33 @@ struct ContentView: View {
                 VStack(alignment: .leading) {
                     Text("Health Record Update")
                     HStack {
-                        RoundedRectangle(cornerRadius: 2)
-                            .fill(kAppContentBgColor)
+                        Image(systemName: shouldUpdateHealthRecord ? "checkmark.rectangle.fill" : "rectangle.fill")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
                             .frame(width: 20, height: 20)
+                            .foregroundColor(kAppContentBgColor)
+                            .background(shouldUpdateHealthRecord ? Color.green : kAppContentBgColor)
+                            .onTapGesture {
+                                self.shouldUpdateHealthRecord.toggle()
+                            }
                         Text("Do not send reports to My Health Record")
                             .foregroundColor(kAppInputColor)
                     }
                 }
-                .padding([.leading, .trailing, .top, .bottom])
+                .padding([.leading, .trailing], 25)
+                .padding([.top, .bottom])
                 HStack(alignment: .top) {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Clinical notes") + Text("*").foregroundColor(.red) }
-                            TextView(text: self.$textViewMessage)
+                            TextView(text: self.$clinicalNotes)
                                 .frame(height: 190)
                                 .cornerRadius(5)
                         }
                         .padding([.leading, .trailing, .top])
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Tests Requested")
-                            TextView(text: self.$textViewMessage)
+                            TextView(text: self.$testsRequested)
                                 .frame(height: 235)
                                 .cornerRadius(5)
                         }
@@ -183,14 +195,20 @@ struct ContentView: View {
                             VStack(alignment: .leading, spacing: self.vSpacing + 10) {
                                 Text("Urgent")
                                 HStack {
-                                    RoundedRectangle(cornerRadius: 2)
-                                        .fill(kAppContentBgColor)
+                                    Image(systemName: isUrgent ? "checkmark.rectangle.fill" : "rectangle.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
                                         .frame(width: 20, height: 20)
+                                        .foregroundColor(kAppContentBgColor)
+                                        .background(isUrgent ? Color.green : kAppContentBgColor)
+                                        .onTapGesture {
+                                            self.isUrgent.toggle()
+                                        }
                                     Text("Yes")
                                         .foregroundColor(kAppInputColor)
                                 }
                             }
-                            .padding([.leading, .trailing])
+                            .padding([.leading, .trailing], 25)
                             .padding(.top, 5)
                             VStack(alignment: .leading, spacing: self.vSpacing) {
                                 Text("Report Required By")
@@ -249,7 +267,7 @@ struct ContentView: View {
                         .padding([.trailing, .top])
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Doctor Signature") + Text("*").foregroundColor(.red) }
-                            TextView(text: self.$textViewMessage, shouldAllowEdit: false)
+                            TextView(text: self.$signature, shouldAllowEdit: false)
                                 .frame(height: 90)
                                 .cornerRadius(5)
                         }

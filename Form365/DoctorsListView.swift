@@ -11,7 +11,7 @@ import SwiftUI
 struct DoctorsListView: View {
     
     var maximumHeight: CGFloat = 300
-    var div: CGFloat = 2.2
+    var div: CGFloat = 2.7
     @EnvironmentObject var doctorsData: DoctorsData
     @Binding var shouldShowDoctorsList: Bool
     
@@ -20,10 +20,10 @@ struct DoctorsListView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text("Full name").bold()
-                    .frame(width: geo.size.width / self.div)
+                        .frame(width: geo.size.width / self.div)
                     Spacer()
                     Text("Spacility").bold()
-                    .frame(width: geo.size.width / self.div)
+                        .frame(width: geo.size.width / self.div)
                     Spacer()
                 }
                 .frame(height: 50)
@@ -47,6 +47,13 @@ struct DoctorsListView: View {
                                     self.handleSelected(doctor: doc)
                                 }
                         }
+                        if doc.id == self.doctorsData.selectedDoctor.id {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .foregroundColor(.green)
+                                .frame(width: 20, height: 20)
+                                .padding(.trailing, 10)
+                        }
                     }
                     .onTapGesture {
                         self.shouldShowDoctorsList.toggle()
@@ -60,7 +67,7 @@ struct DoctorsListView: View {
                     UITableViewCell.appearance().backgroundColor = .clear
                 }
             }
-
+                
             .padding(0)
         }
         .frame(height: (60 * CGFloat(Doctor.sampleData.count)) < self.maximumHeight ? (60 * CGFloat(Doctor.sampleData.count)) : self.maximumHeight)
@@ -75,6 +82,6 @@ struct DoctorsListView: View {
 struct DoctorsListView_Previews: PreviewProvider {
     static var previews: some View {
         DoctorsListView(shouldShowDoctorsList: .constant(false))
-            .environmentObject(Doctor())
+            .environmentObject(DoctorsData())
     }
 }

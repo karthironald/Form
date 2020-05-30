@@ -11,7 +11,7 @@ import SwiftUI
 struct PatentientsListView: View {
     
     var maximumHeight: CGFloat = 300
-    var div: CGFloat = 3.2
+    var div: CGFloat = 4.5
     @EnvironmentObject var patientsData: PatientsData
     @Binding var shouldShowPatientsList: Bool
     
@@ -20,13 +20,15 @@ struct PatentientsListView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     Text("Surname").bold()
-                    .frame(width: geo.size.width / self.div)
+                        .frame(width: geo.size.width / self.div)
+                        .padding(.leading)
                     Spacer()
                     Text("Given Name").bold()
-                    .frame(width: geo.size.width / self.div)
+                        .frame(width: geo.size.width / self.div)
                     Spacer()
                     Text("Date of Birth").bold()
-                    .frame(width: geo.size.width / self.div)
+                        .frame(width: geo.size.width / self.div)
+                        .padding(.trailing, 40)
                 }
                 .frame(height: 50)
                 .background(kAppContentBgColor)
@@ -58,6 +60,12 @@ struct PatentientsListView: View {
                                     self.handleSelected(patient: pat)
                                 }
                         }
+                        if pat.id == self.patientsData.selectedPatient.id {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .foregroundColor(.green)
+                                .frame(width: 20, height: 20)
+                        }
                     }
                     .onTapGesture {
                         self.shouldShowPatientsList.toggle()
@@ -77,6 +85,7 @@ struct PatentientsListView: View {
     }
     
     func handleSelected(patient: Patient) {
+        patientsData.selectedPatient.id = patient.id
         patientsData.enteredSurname = patient.surname
         patientsData.enteredGivenName = patient.givenName
         patientsData.enteredDob = patient.dob
