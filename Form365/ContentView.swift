@@ -10,6 +10,8 @@ import SwiftUI
 
 let kAppContentBgUIColor = UIColor.systemGray5
 let kAppContentBgColor = Color(kAppContentBgUIColor)
+let kAppInputUIColor = UIColor.black.withAlphaComponent(0.70)
+let kAppInputColor = Color(kAppInputUIColor)
 
 struct ContentView: View {
     
@@ -33,6 +35,7 @@ struct ContentView: View {
                             HStack(alignment: .top) { Text("Surename") + Text("*").foregroundColor(.red) }
                                 .padding(.bottom, 0)
                             TextField("Surename", text: self.$patientsData.enteredSurname)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -51,6 +54,7 @@ struct ContentView: View {
                             Text("Address")
                                 .padding(.bottom, 0)
                             TextField("Address", text: self.$patientsData.enteredAddress)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -61,6 +65,7 @@ struct ContentView: View {
                             HStack(alignment: .top) { Text("Phone No.") + Text("*").foregroundColor(.red) }
                                 .padding(.bottom, 0)
                             TextField("## #### ####", text: self.$patientsData.enteredPhoneNumber)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -72,6 +77,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Given name") + Text("*").foregroundColor(.red) }
                             TextField("Given name", text: self.$patientsData.enteredGivenName)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -81,6 +87,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Suburb")
                             TextField("Suburb", text: self.$patientsData.enteredSuburb)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -90,6 +97,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Medicare No.")
                             TextField("Medicare No.", text: self.$patientsData.enteredMedicareNumber)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -102,6 +110,7 @@ struct ContentView: View {
                             VStack(alignment: .leading, spacing: self.vSpacing) {
                                 HStack(alignment: .top) { Text("DOB") + Text("*").foregroundColor(.red) }
                                 TextField("dd/mm/yyyy", text: self.$patientsData.enteredDob)
+                                    .foregroundColor(kAppInputColor)
                                     .frame(height: 40)
                                     .padding([.leading, .trailing])
                                     .padding(.top, 0)
@@ -111,6 +120,7 @@ struct ContentView: View {
                             VStack(alignment: .leading, spacing: self.vSpacing) {
                                 Text("Sex")
                                 TextField("Sex", text: self.$patientsData.enteredSex)
+                                    .foregroundColor(kAppInputColor)
                                     .frame(height: 40)
                                     .padding([.leading, .trailing])
                                     .padding(.top, 0)
@@ -122,6 +132,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Postcode")
                             TextField("Postcode", text: self.$patientsData.enteredPostcode)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -131,6 +142,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Health Fund")
                             TextField("Health Fund", text: self.$patientsData.enteredHealthFund)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -146,7 +158,8 @@ struct ContentView: View {
                         RoundedRectangle(cornerRadius: 2)
                             .fill(kAppContentBgColor)
                             .frame(width: 20, height: 20)
-                        Text("Do not send reports to My Health Record").foregroundColor(.secondary)
+                        Text("Do not send reports to My Health Record")
+                            .foregroundColor(kAppInputColor)
                     }
                 }
                 .padding([.leading, .trailing, .top, .bottom])
@@ -173,7 +186,8 @@ struct ContentView: View {
                                     RoundedRectangle(cornerRadius: 2)
                                         .fill(kAppContentBgColor)
                                         .frame(width: 20, height: 20)
-                                    Text("Yes").foregroundColor(.secondary)
+                                    Text("Yes")
+                                        .foregroundColor(kAppInputColor)
                                 }
                             }
                             .padding([.leading, .trailing])
@@ -181,6 +195,7 @@ struct ContentView: View {
                             VStack(alignment: .leading, spacing: self.vSpacing) {
                                 Text("Report Required By")
                                 TextField("DD/MM/YYYY", text: self.$ageName)
+                                    .foregroundColor(kAppInputColor)
                                     .frame(height: 40)
                                     .padding([.leading, .trailing])
                                     .padding(.top, 0)
@@ -209,6 +224,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Doctor's Phone") + Text("*").foregroundColor(.red) }
                             TextField("## #### ####", text: self.$doctorsData.selectedDoctor.phone)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -241,6 +257,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Date")
                             TextField("DD/MM/YYYY", text: self.$ageName)
+                                .foregroundColor(kAppInputColor)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)

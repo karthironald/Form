@@ -28,6 +28,7 @@ struct TextView: UIViewRepresentable {
         textView.delegate = context.coordinator
         textView.backgroundColor = kAppContentBgUIColor
         textView.isEditable = shouldAllowEdit
+        textView.textColor = kAppInputUIColor
         return textView
     }
  
