@@ -29,7 +29,7 @@ struct PatentientsListView: View {
                     .frame(width: geo.size.width / self.div)
                 }
                 .frame(height: 50)
-                .background(Color.black.opacity(0.2))
+                .background(kAppContentBgColor)
                 List(self.patientsData.patients) { pat in
                     HStack {
                         Text(pat.surname)
@@ -71,7 +71,6 @@ struct PatentientsListView: View {
                     UITableViewCell.appearance().backgroundColor = .clear
                 }
             }
-            .background(Color.black.opacity(0.1))
             .padding(0)
         }
         .frame(height: (50 * CGFloat(Patient.sampleData.count)) < self.maximumHeight ? (50 * CGFloat(Patient.sampleData.count)) : self.maximumHeight)

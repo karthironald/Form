@@ -12,7 +12,8 @@ import UIKit
 struct TextView: UIViewRepresentable {
  
     @Binding var text: String
- 
+    var shouldAllowEdit = true
+    
     func makeCoordinator() -> Coordinator {
         Coordinator($text)
     }
@@ -20,16 +21,19 @@ struct TextView: UIViewRepresentable {
     func makeUIView(context: Context) -> UITextView {
         let textView = UITextView()
  
+        textView.font = UIFont.systemFont(ofSize: 16)
         textView.autocapitalizationType = .sentences
         textView.isSelectable = true
         textView.isUserInteractionEnabled = true
         textView.delegate = context.coordinator
-        textView.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+        textView.backgroundColor = kAppContentBgUIColor
+        textView.isEditable = shouldAllowEdit
         return textView
     }
  
     func updateUIView(_ uiView: UITextView, context: Context) {
         uiView.text = text
+        uiView.font = UIFont.systemFont(ofSize: 16)
     }
     
 }

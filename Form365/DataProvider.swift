@@ -142,3 +142,87 @@ final class PatientsData: ObservableObject {
     }
     
 }
+
+class Doctor: Identifiable, ObservableObject {
+    var id: UUID
+    var salutation: String
+    var name: String
+    var spacility: String
+    var address1: String
+    var address2: String
+    var email: String
+    var phone: String
+    var healthLinkCode: String
+    var fax: String
+    var labs: [String: String]
+    
+    init() {
+        id = UUID()
+        salutation = ""
+        name = ""
+        spacility = ""
+        address1 = ""
+        address2 = ""
+        email = ""
+        phone = ""
+        healthLinkCode = ""
+        fax = ""
+        labs = [:]
+    }
+    
+    init(id: UUID, salutation: String, name: String, spacility: String, address1: String, address2: String, email: String, phone: String, healthLinkCode: String, fax: String, labs: [String: String]) {
+        self.id = id
+        self.salutation = salutation
+        self.name = name
+        self.spacility = spacility
+        self.address1 = address1
+        self.address2 = address2
+        self.email = email
+        self.phone = phone
+        self.healthLinkCode = healthLinkCode
+        self.fax = fax
+        self.labs = labs
+    }
+    
+    static let sampleData = [
+        Doctor(id: UUID(), salutation: "Dr", name: "Granger Hermoine", spacility: "Gynaecologist/Obstetrician", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Prof", name: "Dumbledore Albus", spacility: "Gastroentrology", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Dr", name: "Weasley Ron", spacility: "Breast & Endocrine Surgeon", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Dr", name: "Hagrid Rubeus", spacility: "Surgeon - Head and Neck/ENT", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"])
+    ]
+    
+    func displayName() -> String {
+        if salutation.isEmpty || name.isEmpty {
+            return ""
+        } else {
+            return "\(salutation). \(name)"
+        }
+    }
+    
+    var fullDetails: String {
+        get {
+            if displayName().isEmpty || spacility.isEmpty || address1.isEmpty {
+                return ""
+            } else {
+                return "\(displayName()),\n\(spacility),\n\(address1)"
+            }
+        }
+        set {
+            finalDetails = newValue
+        }
+    }
+    
+    var finalDetails: String = ""
+}
+
+final class DoctorsData: ObservableObject {
+    
+    @Published var selectedDoctor = Doctor()
+    
+    @Published var doctors = [
+        Doctor(id: UUID(), salutation: "Dr", name: "Granger Hermoine", spacility: "Gynaecologist/Obstetrician", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Prof", name: "Dumbledore Albus", spacility: "Gastroentrology", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Dr", name: "Weasley Ron", spacility: "Breast & Endocrine Surgeon", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"]),
+        Doctor(id: UUID(), salutation: "Dr", name: "Hagrid Rubeus", spacility: "Surgeon - Head and Neck/ENT", address1: "197 Briens Road, Northmead, NSW 2153", address2: "197 Briens Road, Northmead, NSW 2153", email: "granger-hermoine@gmail.com", phone: "02 8855 4433", healthLinkCode: "austpath", fax: "88363399", labs: ["Histopathology" : "Austpath", "Bloods": "DHM", "Microbiology" : "Laverty", "Molecular testing": "Royal Prince Alfred"])
+    ]
+}

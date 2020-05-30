@@ -8,8 +8,8 @@
 
 import SwiftUI
 
-let kAppBackgroundColor = Color.white
-let kAppContentBgColor = Color.black.opacity(0.1)
+let kAppContentBgUIColor = UIColor.systemGray5
+let kAppContentBgColor = Color(kAppContentBgUIColor)
 
 struct ContentView: View {
     
@@ -17,7 +17,11 @@ struct ContentView: View {
     @State private var textViewMessage = ""
     @State var vSpacing: CGFloat = 3
     @State var shouldShowPatientsList = false
+    @State var shouldShowDoctorsList = false
+    @State var shouldShowCopyToDoctorsList = false
     @ObservedObject var patientsData: PatientsData = PatientsData()
+    @ObservedObject var doctorsData: DoctorsData = DoctorsData()
+    @ObservedObject var copyToDoctorsData: DoctorsData = DoctorsData()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -56,7 +60,7 @@ struct ContentView: View {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Phone No.") + Text("*").foregroundColor(.red) }
                                 .padding(.bottom, 0)
-                            TextField("Phone No.", text: self.$patientsData.enteredPhoneNumber)
+                            TextField("## #### ####", text: self.$patientsData.enteredPhoneNumber)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -140,7 +144,7 @@ struct ContentView: View {
                     Text("Health Record Update")
                     HStack {
                         RoundedRectangle(cornerRadius: 2)
-                            .fill(Color.secondary.opacity(0.3))
+                            .fill(kAppContentBgColor)
                             .frame(width: 20, height: 20)
                         Text("Do not send reports to My Health Record").foregroundColor(.secondary)
                     }
@@ -167,7 +171,7 @@ struct ContentView: View {
                                 Text("Urgent")
                                 HStack {
                                     RoundedRectangle(cornerRadius: 2)
-                                        .fill(Color.secondary.opacity(0.3))
+                                        .fill(kAppContentBgColor)
                                         .frame(width: 20, height: 20)
                                     Text("Yes").foregroundColor(.secondary)
                                 }
@@ -189,14 +193,22 @@ struct ContentView: View {
                     VStack(alignment: .leading) {
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Doctor Name") + Text("*").foregroundColor(.red) }
-                            TextView(text: self.$textViewMessage)
+                            TextView(text: self.$doctorsData.selectedDoctor.fullDetails, shouldAllowEdit: false)
                                 .frame(height: 100)
                                 .cornerRadius(5)
+                                .onTapGesture {
+                                    self.shouldShowDoctorsList.toggle()
+                            }
+                            .popover(isPresented: self.$shouldShowDoctorsList) {
+                                DoctorsListView(shouldShowDoctorsList: self.$shouldShowDoctorsList)
+                                    .environmentObject(self.doctorsData)
+                                    .frame(width: 600)
+                            }
                         }
                         .padding([.trailing, .top])
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Doctor's Phone") + Text("*").foregroundColor(.red) }
-                            TextField("02 8855 4433", text: self.$ageName)
+                            TextField("## #### ####", text: self.$doctorsData.selectedDoctor.phone)
                                 .frame(height: 40)
                                 .padding([.leading, .trailing])
                                 .padding(.top, 0)
@@ -206,14 +218,22 @@ struct ContentView: View {
                         .padding([.trailing, .top])
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             Text("Copy To")
-                            TextView(text: self.$textViewMessage)
+                            TextView(text: self.$copyToDoctorsData.selectedDoctor.fullDetails, shouldAllowEdit: false)
                                 .frame(height: 100)
                                 .cornerRadius(5)
+                                .onTapGesture {
+                                    self.shouldShowCopyToDoctorsList.toggle()
+                            }
+                            .popover(isPresented: self.$shouldShowCopyToDoctorsList) {
+                                DoctorsListView(shouldShowDoctorsList: self.$shouldShowCopyToDoctorsList)
+                                    .environmentObject(self.copyToDoctorsData)
+                                    .frame(width: 600)
+                            }
                         }
                         .padding([.trailing, .top])
                         VStack(alignment: .leading, spacing: self.vSpacing) {
                             HStack(alignment: .top) { Text("Doctor Signature") + Text("*").foregroundColor(.red) }
-                            TextView(text: self.$textViewMessage)
+                            TextView(text: self.$textViewMessage, shouldAllowEdit: false)
                                 .frame(height: 90)
                                 .cornerRadius(5)
                         }
@@ -234,7 +254,6 @@ struct ContentView: View {
             .padding([.bottom, .top])
         }
         .statusBar(hidden: true)
-        .background(kAppBackgroundColor)
     }
     
 }

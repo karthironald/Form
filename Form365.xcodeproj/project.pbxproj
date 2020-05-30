@@ -17,6 +17,7 @@
 		775D538724816D000075E0B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775D538524816D000075E0B1 /* LaunchScreen.storyboard */; };
 		775D538F248178020075E0B1 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775D538E248178020075E0B1 /* TextView.swift */; };
 		778ABA7C24826520005F14A3 /* PatentientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABA7B24826520005F14A3 /* PatentientsListView.swift */; };
+		778ABA7E24826A7C005F14A3 /* DoctorsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABA7D24826A7C005F14A3 /* DoctorsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		775D538824816D000075E0B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775D538E248178020075E0B1 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		778ABA7B24826520005F14A3 /* PatentientsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatentientsListView.swift; sourceTree = "<group>"; };
+		778ABA7D24826A7C005F14A3 /* DoctorsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoctorsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				770FEF5E24821CB70074E01F /* DataProvider.swift */,
 				775D537A24816CFF0075E0B1 /* AppDelegate.swift */,
 				778ABA7B24826520005F14A3 /* PatentientsListView.swift */,
+				778ABA7D24826A7C005F14A3 /* DoctorsListView.swift */,
 				775D537C24816CFF0075E0B1 /* SceneDelegate.swift */,
 				775D537E24816CFF0075E0B1 /* ContentView.swift */,
 				775D538024816D000075E0B1 /* Assets.xcassets */,
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				778ABA7C24826520005F14A3 /* PatentientsListView.swift in Sources */,
+				778ABA7E24826A7C005F14A3 /* DoctorsListView.swift in Sources */,
 				775D537B24816CFF0075E0B1 /* AppDelegate.swift in Sources */,
 				775D538F248178020075E0B1 /* TextView.swift in Sources */,
 				770FEF5F24821CB70074E01F /* DataProvider.swift in Sources */,
