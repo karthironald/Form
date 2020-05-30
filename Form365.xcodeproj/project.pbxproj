@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		770FEF592482190B0074E01F /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 770FEF582482190B0074E01F /* IQKeyboardManagerSwift */; };
-		770FEF5B24821A7E0074E01F /* PatentientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770FEF5A24821A7E0074E01F /* PatentientsListView.swift */; };
 		770FEF5F24821CB70074E01F /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770FEF5E24821CB70074E01F /* DataProvider.swift */; };
 		775D537B24816CFF0075E0B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775D537A24816CFF0075E0B1 /* AppDelegate.swift */; };
 		775D537D24816CFF0075E0B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775D537C24816CFF0075E0B1 /* SceneDelegate.swift */; };
@@ -17,10 +16,10 @@
 		775D538424816D000075E0B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 775D538324816D000075E0B1 /* Preview Assets.xcassets */; };
 		775D538724816D000075E0B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775D538524816D000075E0B1 /* LaunchScreen.storyboard */; };
 		775D538F248178020075E0B1 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775D538E248178020075E0B1 /* TextView.swift */; };
+		778ABA7C24826520005F14A3 /* PatentientsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 778ABA7B24826520005F14A3 /* PatentientsListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		770FEF5A24821A7E0074E01F /* PatentientsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PatentientsListView.swift; path = ../../../PatentientsListView.swift; sourceTree = "<group>"; };
 		770FEF5E24821CB70074E01F /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		775D537724816CFF0075E0B1 /* Form365.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Form365.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		775D537A24816CFF0075E0B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +30,7 @@
 		775D538624816D000075E0B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		775D538824816D000075E0B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		775D538E248178020075E0B1 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		778ABA7B24826520005F14A3 /* PatentientsListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatentientsListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,9 +67,9 @@
 				775D538E248178020075E0B1 /* TextView.swift */,
 				770FEF5E24821CB70074E01F /* DataProvider.swift */,
 				775D537A24816CFF0075E0B1 /* AppDelegate.swift */,
+				778ABA7B24826520005F14A3 /* PatentientsListView.swift */,
 				775D537C24816CFF0075E0B1 /* SceneDelegate.swift */,
 				775D537E24816CFF0075E0B1 /* ContentView.swift */,
-				770FEF5A24821A7E0074E01F /* PatentientsListView.swift */,
 				775D538024816D000075E0B1 /* Assets.xcassets */,
 				775D538524816D000075E0B1 /* LaunchScreen.storyboard */,
 				775D538824816D000075E0B1 /* Info.plist */,
@@ -163,12 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				778ABA7C24826520005F14A3 /* PatentientsListView.swift in Sources */,
 				775D537B24816CFF0075E0B1 /* AppDelegate.swift in Sources */,
 				775D538F248178020075E0B1 /* TextView.swift in Sources */,
 				770FEF5F24821CB70074E01F /* DataProvider.swift in Sources */,
 				775D537D24816CFF0075E0B1 /* SceneDelegate.swift in Sources */,
 				775D537F24816CFF0075E0B1 /* ContentView.swift in Sources */,
-				770FEF5B24821A7E0074E01F /* PatentientsListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
